@@ -1,0 +1,26 @@
+{
+  "name": "add-mongoose-to-bloggingapp-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grodz21/add-mongoose-to-bloggingapp-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grodz21/add-mongoose-to-bloggingapp-challenge/issues"
+  },
+  "homepage": "https://github.com/grodz21/add-mongoose-to-bloggingapp-challenge#readme",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.0",
+    "mongoose": "^4.7.8",
+    "uuid": "^3.0.1"
+  }
+}
