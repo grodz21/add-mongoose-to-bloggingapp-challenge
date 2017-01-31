@@ -1,9 +1,7 @@
-const uuid = require('uuid');
 const mongoose = require('mongoose');
 
 // this is our schema to represent a post
 const postSchema = mongoose.Schema({
-  id: {uuid.v4()},
   author: {type: String, required: true},
   title: {type: String},
   content: {type: String, required: true},
@@ -25,7 +23,6 @@ const postSchema = mongoose.Schema({
 postSchema.methods.apiRepr = function() {
 
   return {
-    id: this._id,
     title: this.title,
     content: this.content,
     author: this.author,

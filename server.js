@@ -20,7 +20,11 @@ app.get('/blogposts', (req, res) => {
   BlogPost
   	.find({})
   	.exec()
-  	.then(blogPostsList =>)
+  	.then(blogPostsList => {
+  		console.log(blogPostsList)
+
+  		res.status(200).json(blogPostsList)
+  	})
   	.catch(err => {
   		console.error(err);
   			res.status(500).json({message: 'Internal server error'})
@@ -60,7 +64,7 @@ app.post('/blogposts', (req, res) => {
       author: req.body.author,
       title: req.body.title,
       content: req.body.content})
-    .then(blogPostsList => res.status(201).json(postSchema.apiRepr()))
+    .then(newBlogPost => res.status(201).json(newBlogPost))
     .catch(err => {
       console.error(err);
       res.status(500).json({message: 'Internal server error'});
