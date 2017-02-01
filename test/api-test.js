@@ -12,6 +12,9 @@ chai.use(chaiHttp);
 
 describe('blogpost', function(){
 
+	var idPostToDelete =
+
+
 	before(function(){
 		return runServer();
 	});
@@ -73,17 +76,15 @@ describe('blogpost', function(){
 		return chai.request(app)
 			.get('/blogposts')
 			.then(function(res) {
-				updateData.id = res.body[0].id;
-
+				updateData.id = res.body[0]._id;
+				console.log(res.body);
 				return chai.request(app)
-					.put(`/blogposts/${updateData.id}`)
+					.put(`/blogposts/${res.body[0]._id}`)
 					.send(updateData)
 			})
 
 			.then(function(res) {
-				res.should.have.status(200);
-				res.body.should.be.a('object');
-				res.body.should.include.keys('author', 'title', 'content');
+				res.should.have.status(204);
 			});
 
 	});
@@ -91,13 +92,19 @@ describe('blogpost', function(){
 
 
 
-	it('should delete blog post on DELETE', function() {
+	it('should delete blog post on DELETE', function() { 
+
 		return chai.request(app)
 
 			.get('/blogposts')
-			.then(function(res) {
+			.then(function(res){
 				return chai.request(app)
-					.delete(`/blogposts/${res.body.id}`)
+					.delete(`/blogposts/${res.body[0]._id}`)
+			})
+
+			.then(function(res) {
+				res.should.have.status(204);
+				
 			});
 
 

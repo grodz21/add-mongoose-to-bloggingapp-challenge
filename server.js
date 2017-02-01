@@ -73,6 +73,7 @@ app.post('/blogposts', (req, res) => {
 
 
 app.put('/blogposts/:id', (req, res) => {
+	console.log(req.body);
   // ensure that the id in the request path and the one in request body match
   if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
     const message = (
